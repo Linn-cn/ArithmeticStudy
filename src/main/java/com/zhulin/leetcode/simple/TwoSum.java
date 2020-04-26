@@ -40,7 +40,7 @@ public class TwoSum {
 
     // case2：利用哈希表的特性，将查找转为哈希查找，这样时间复杂度为 O(1) + O(n) = O(n)
     public static int[] twoSum2(int[] nums, int target) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Integer> map = new HashMap<>(Math.max((int) (nums.length/0.75f) + 1, 16));
         for (int i = 0; i < nums.length; i++) {
             int temp = target - nums[i];
             if (map.containsKey(temp)){

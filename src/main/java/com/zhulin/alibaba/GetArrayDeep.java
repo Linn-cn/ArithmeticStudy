@@ -15,27 +15,33 @@ import java.util.Stack;
  */
 public class GetArrayDeep {
     public static void main(String[] args) {
-        System.out.println(getArrayDeep("[0, [2], [2, [3]]]"));
+        System.out.println(getArrayDeep("[1, 2, [3, [1, [0]]]]"));
     }
 
     public static int getArrayDeep(String s){
         int count = 0;
         Stack<Character> stack = new Stack<>();
+        // 变成字符数组
         char[] chars = s.toCharArray();
+        // 循环遍历
         for (char aChar : chars) {
+            // 只有括号才进栈
             if (aChar == '[' || aChar == ']'){
+                // 栈是空的，则直接push
                 if (stack.empty()) {
                     stack.push(aChar);
                     continue;
                 }
-                if (stack.peek().equals('[') && aChar == ']') {
+                // 当前字符为]，就去栈中抵消一个[，代表一个数组
+                if (aChar == ']') {
+                    // 比较此时栈中的最大深度和当前的最大深度，取其最大值
+                    count = Math.max(stack.size(),count);
                     stack.pop();
-                    count++;
                     continue;
                 }
                 stack.push(aChar);
             }
         }
-        return count;
+        return count - 1;
     }
 }

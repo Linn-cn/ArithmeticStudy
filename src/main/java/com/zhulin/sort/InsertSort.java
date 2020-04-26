@@ -5,22 +5,22 @@ import java.util.Arrays;
 /**
  * @author 南街
  * @program ArithmeticStudy
- * @classname ChaRuSort
+ * @classname 插入排序
  * @description
  * @create 2020-03-04 14:07
  **/
-public class ChaRuSort {
+public class InsertSort {
     public static void main(String[] args) {
-        int[] numbers = {3,1,4,45,6,7,9};
-        insertionSort(numbers);
+        int[] numbers = {1, 3, 45, 1, 6, 7, 9};
+        insertSort3(numbers);
         System.out.println(Arrays.toString(numbers));
     }
 
-    public static int[] insertionSort(int[] array) {
+    public static void insertSort1(int[] array) {
         int len;
         // 基本情况下的数组可以直接返回
-        if(array == null || (len = array.length) == 0 || len == 1) {
-            return array;
+        if (array == null || (len = array.length) == 0 || len == 1) {
+            return;
         }
         int current;
         for (int i = 0; i < len - 1; i++) {
@@ -38,6 +38,20 @@ public class ChaRuSort {
             // while循环跳出说明找到了位置
             array[preIdx + 1] = current;
         }
-        return array;
+    }
+
+
+    public static void insertSort3(int[] array) {
+        // 默认第一个有序
+        for (int i = 1; i < array.length; i++) {
+            int temp = array[i];
+            int j = i - 1;
+            // 从有序数组的后面往前比较，大于temp的值都得后移
+            for (; j >= 0 && array[j] > temp; j--) {
+                array[j + 1] = array[j];
+            }
+            // 碰到小于或等于的数停止，由于多减了1，所以加上1后，赋值为插入值temp
+            array[j + 1] = temp;
+        }
     }
 }

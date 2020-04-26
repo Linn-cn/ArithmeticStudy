@@ -65,18 +65,11 @@ public class MaxProfit {
      * 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
      */
     public static int maxProfit3(int[] prices) {
-        int max = 0;
-        int min = Integer.MAX_VALUE;
-        int i = 0;
-        while(i < prices.length){
-            if (prices[i] <= min) {
-                min = prices[i];
-                i++;
-            } else if (prices[i] - min > 0) {
-                max += prices[i] - min;
-                min = Integer.MAX_VALUE;
-            }
+        int maxprofit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1])
+                maxprofit += prices[i] - prices[i - 1];
         }
-        return max;
+        return maxprofit;
     }
 }

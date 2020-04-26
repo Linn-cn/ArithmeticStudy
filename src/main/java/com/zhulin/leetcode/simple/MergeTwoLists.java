@@ -24,9 +24,19 @@ class ListNode {
 public class MergeTwoLists {
 
     public static void main(String[] args) {
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+
+        listNode1.next = listNode2;
+        ListNode head = listNode1;
+        while (head != null){
+            System.out.println(head.val);
+            head = head.next;
+        }
     }
 
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // 虚假链表头
         ListNode prehead = new ListNode(-1);
 
         // 头指针
