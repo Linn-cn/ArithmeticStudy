@@ -36,6 +36,7 @@ public class GenerateParenthesis {
     }
 
     /**
+     * 深度优先搜索
      * @param left  左括号
      * @param right 右括号
      * @param n     限制条件

@@ -42,6 +42,7 @@ public class InsertSort {
 
 
     public static void insertSort2(int[] array) {
+        if (array.length <= 1) return;
         // 默认第一个有序
         for (int i = 1; i < array.length; i++) {
             int temp = array[i];

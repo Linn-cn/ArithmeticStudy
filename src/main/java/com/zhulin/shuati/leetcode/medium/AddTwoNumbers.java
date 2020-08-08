@@ -1,4 +1,4 @@
-package com.zhulin.leetcode.medium;
+package com.zhulin.shuati.leetcode.medium;
 
 /**
  * 题目: 两个数之和

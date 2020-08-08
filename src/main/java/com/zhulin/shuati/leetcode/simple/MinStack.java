@@ -29,19 +29,20 @@ import java.util.Stack;
 public class MinStack {
 
     public static void main(String[] args) {
-        MinStack stack = new MinStack();
-        MinStack2 stack2 = new MinStack2();
+        // MinStack stack = new MinStack();
+        MinStack2 stack = new MinStack2();
 //        for (int i = 0; i < 11; i++) {
 //            stack.push((int) (Math.random() * 100));
 //        }
-        stack.push(2);
-        stack.push(35);
+        stack.push(13);
+        stack.push(45);
         stack.push(3);
-        stack.push(46);
-        stack.push(1);
+        stack.push(6);
         stack.push(1);
         stack.pop();
         System.out.println(stack.top());
+        System.out.println(stack.getMin());
+        System.out.println(stack.getMin());
         System.out.println(stack.getMin());
     }
 
@@ -97,6 +98,7 @@ public class MinStack {
             stack = new Stack<>();
             min_stack = new Stack<>();
         }
+
         public void push(int x) {
             stack.push(x);
             if(min_stack.isEmpty() || x <= min_stack.peek())

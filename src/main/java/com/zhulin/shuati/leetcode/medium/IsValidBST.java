@@ -90,7 +90,7 @@ public class IsValidBST {
 
 
     public static boolean helper2(TreeNode root) {
-        Stack<TreeNode> stack = new Stack();
+        Stack<TreeNode> stack = new Stack<>();
         double inorder = - Double.MAX_VALUE;
 
         while (!stack.isEmpty() || root != null) {

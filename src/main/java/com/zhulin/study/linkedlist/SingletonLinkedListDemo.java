@@ -7,7 +7,7 @@ package com.zhulin.study.linkedlist;
  * @description
  * @create 2020-02-25 20:05
  **/
-public class SingletonLikedListDemo {
+public class SingletonLinkedListDemo {
     public static void main(String[] args) {
         HeroNode heroNode1 = new HeroNode(1, "宋江", "及时雨");
         HeroNode heroNode2 = new HeroNode(2, "卢俊义", "玉麒麟");

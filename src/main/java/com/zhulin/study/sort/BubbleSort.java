@@ -20,7 +20,8 @@ public class BubbleSort {
      * @param
      */
     public static void bubbleSort(int[] numbers) {
-        for (int i = 0; i < numbers.length - 1; i++) {
+        if (numbers.length <= 1) return;
+        for (int i = 0; i < numbers.length; i++) {
             //有序标记，每一轮的初始是true
             boolean isSorted = true;
             for (int j = 0; j < numbers.length - i - 1; j++) {

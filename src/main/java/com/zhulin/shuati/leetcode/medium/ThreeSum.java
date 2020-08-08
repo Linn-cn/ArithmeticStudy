@@ -1,6 +1,7 @@
 package com.zhulin.shuati.leetcode.medium;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * 题目：三数之和
@@ -25,8 +26,9 @@ import java.util.*;
 public class ThreeSum {
     public static void main(String[] args) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
+        // int[] nums = {-1, 0, 1, 0};
         // int[] nums = {1, 2, -2, -1};
-        List<List<Integer>> lists = threeSum3(nums);
+        List<List<Integer>> lists = threeSum2(nums);
         for (int i = 0; i < lists.size(); i++) {
             System.out.println(lists.get(i));
         }
@@ -39,7 +41,7 @@ public class ThreeSum {
             for (int j = i + 1; j < nums.length - 1; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
                     if ((nums[i] + nums[j] + nums[k]) == 0) {
-                        List<Integer> list = new ArrayList<>(Arrays.asList(nums[i],nums[j],nums[k]));
+                        List<Integer> list = new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k]));
                         Collections.sort(list);
                         if (lists.size() == 0) {
                             lists.add(list);
@@ -68,18 +70,21 @@ public class ThreeSum {
     public static List<List<Integer>> threeSum2(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         HashMap<Integer, Integer> map = new HashMap<>();
-        if (nums.length < 3) return lists;
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
+        if (nums.length <= 3) {
+            if (nums.length == 3 && nums[0] + nums[1] + nums[2] == 0) {
+                lists.add(new ArrayList<>(Arrays.asList(nums[0], nums[1], nums[2])));
+            }
+            return lists;
         }
+        Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
             int j = i + 1;
+            // if (i >= 1  && (nums[i] == nums[i - 1])) continue;
             int key = -(nums[i] + nums[j]);
-            if (map.containsKey(key)){
+            if (map.containsKey(key)) {
                 lists.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], key)));
             }
+            map.put(nums[i], i);
         }
         return lists;
     }
