@@ -37,7 +37,7 @@ public class MaxProfit {
      * 暴力求解
      * 我们需要找出给定数组中两个数字之间的最大差值（即，最大利润）。此外，第二个数字（卖出价格）必须大于第一个数字（买入价格）。
      *
-     * 形式上，对于每组 ii 和 jj（其中 j > ij>i）我们需要找出 \max(prices[j] - prices[i])max(prices[j]−prices[i])。
+     * 形式上，对于每组 i 和 j（其中 j > i）我们需要找出 max(prices[j]−prices[i])。
      *
      */
     public int maxProfit(int[] prices) {

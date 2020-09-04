@@ -42,7 +42,7 @@ public class SearchInsert {
         return 0;
     }
 
-    public static int searchInsert1(int[] nums,int target){
+    public int searchInsert1(int[] nums,int target){
         if (nums[nums.length -1] < target) return nums.length;
         int left = 0;
         int right = nums.length - 1;

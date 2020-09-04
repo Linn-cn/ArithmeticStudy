@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @description 归并排序，合并排序
  * @create 2020-06-06 17:07
  **/
-public class mergeSort {
+public class MergeSort {
     public static void main(String[] args) {
         int[] A = {5, 4, 7, 9, 10, 21, 3};
         mergeSort(A, 0, A.length - 1);
@@ -17,7 +17,7 @@ public class mergeSort {
     }
 
     /**
-     * 合并数组
+     * 排序并合并数组
      *
      * @param A
      * @param low  下界
@@ -47,6 +47,7 @@ public class mergeSort {
 
     public static void mergeSort(int[] A, int low, int high) {
         if (low < high) {
+            // 防止数值溢出
             int mid = low + (high - low) / 2;
             // 先分割左边
             mergeSort(A, low, mid);
