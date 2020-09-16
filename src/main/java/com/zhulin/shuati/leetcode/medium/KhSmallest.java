@@ -74,6 +74,13 @@ public class KhSmallest {
 
     }
 
+    /**
+     * 如果一个问题 A 可以分解为若干子问题 B、C、D，你可以假设子问题 B、C、D 已经解决，在此基础上思考如何解决问题 A。
+     * 而且，你只需要思考问题 A 与子问题 B、C、D 两层之间的关系即可，不需要一层一层往下思考子问题与子子问题，子子问题与子子子问题之间的关系。
+     * 屏蔽掉递归细节，这样子理解起来就简单多了。
+     * @author Linn-cn
+     * @date 2020/9/5
+     */
     public static void helper(TreeNode root, List<Integer> res) {
         // terminate
         if (root == null) {

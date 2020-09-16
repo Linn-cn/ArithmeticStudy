@@ -2,7 +2,7 @@ package com.zhulin.shuati.leetcode.simple;
 
 /**
  * 题目：爬楼梯
- * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
  * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
  * 注意：给定 n 是一个正整数。
  *
@@ -43,7 +43,7 @@ public class ClimbStairs {
         return ClimbStairs1(n - 1) + ClimbStairs1(n - 2);
     }
 
-    // case2: 加一个缓存
+    // case2：加一个缓存
     public static int ClimbStairs2(int n){
         if (n < 3) return n == 1 ? 1 : 2;
         int a1 = 1,a2 = 2,a3;

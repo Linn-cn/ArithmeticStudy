@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * 题目：有效的括号
- * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+ * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
  *
  * 有效字符串需满足：
  *
@@ -17,19 +17,19 @@ import java.util.Stack;
  *
  * 输入: "()"
  * 输出: true
- * 示例 2:
+ * 示例 2:
  *
  * 输入: "()[]{}"
  * 输出: true
- * 示例 3:
+ * 示例 3:
  *
  * 输入: "(]"
  * 输出: false
- * 示例 4:
+ * 示例 4:
  *
  * 输入: "([)]"
  * 输出: false
- * 示例 5:
+ * 示例 5:
  *
  * 输入: "{[]}"
  * 输出: true
@@ -42,7 +42,7 @@ public class StackIsValid {
 
     private static HashMap<Character,Character> map = new HashMap<>();
 
-    public StackIsValid(){
+    static {
         map.put('(',')');
         map.put('{','}');
         map.put('[',']');
@@ -78,5 +78,22 @@ public class StackIsValid {
             stack.push(aChar);
         }
         return stack.isEmpty();
+    }
+
+    public static boolean isMatch(String str){
+        if (str == null) {
+            return false;
+        }
+        Stack<Character> stack = new Stack<>();
+        for (char ch : str.toCharArray()) {
+            if (map.containsKey(ch)){
+                stack.push(ch);
+            } else if (map.containsValue(ch)){
+                if (stack.empty() || !stack.pop().equals(map.get(ch))) {
+                    return false;
+                }
+            }
+        }
+        return stack.empty();
     }
 }

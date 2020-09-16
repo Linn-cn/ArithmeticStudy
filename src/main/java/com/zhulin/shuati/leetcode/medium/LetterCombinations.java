@@ -36,6 +36,13 @@ public class LetterCombinations {
         put("9", "wxyz");
     }};
 
+    public List<String> letterCombinations(String digits) {
+        List<String> output = new ArrayList<String>();
+        if (digits.length() != 0)
+            backtrack("", digits,output);
+        return output;
+    }
+
     /**
      * 方法：回溯
      * 回溯是一种通过穷举所有可能情况来找到所有解的算法。如果一个候选解最后被发现并不是可行解，回溯算法会舍弃它，并在前面的一些步骤做出一些修改，并重新尝试找到可行解。
@@ -69,13 +76,6 @@ public class LetterCombinations {
             // 将当前结果拼接后传入下一层，并截取掉已经处理过的数字
             backtrack(combination + phone.get(digit).charAt(i), next_digits.substring(1),output);
         }
-    }
-
-    public List<String> letterCombinations(String digits) {
-        List<String> output = new ArrayList<String>();
-        if (digits.length() != 0)
-            backtrack("", digits,output);
-        return output;
     }
 
     /**
