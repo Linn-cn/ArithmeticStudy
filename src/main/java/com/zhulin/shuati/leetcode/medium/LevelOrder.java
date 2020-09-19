@@ -41,7 +41,8 @@ public class LevelOrder {
             return lists;
         }
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);    // 根节点入队
+        // 根节点入队
+        queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.remove();
             lists.add(node.val);
@@ -77,7 +78,8 @@ public class LevelOrder {
             return lists;
         }
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);    // 根节点入队
+        // 根节点入队
+        queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> list = new ArrayList<>();

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Stack;
 
 /**
- * 题目：有效的括号
+ * 题目：20. 有效的括号
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
  *
  * 有效字符串需满足：
@@ -40,12 +40,12 @@ import java.util.Stack;
  **/
 public class StackIsValid {
 
-    private static HashMap<Character,Character> map = new HashMap<>();
+    private static HashMap<Character, Character> map = new HashMap<>();
 
     static {
-        map.put('(',')');
-        map.put('{','}');
-        map.put('[',']');
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
     }
 
     public static void main(String[] args) {
@@ -54,6 +54,7 @@ public class StackIsValid {
 
     /**
      * 解题思路：最近相关性 stack、先来后到 queue
+     *
      * @return
      */
     public static boolean isValid(String s) {
@@ -80,15 +81,16 @@ public class StackIsValid {
         return stack.isEmpty();
     }
 
-    public static boolean isMatch(String str){
+    public static boolean isMatch(String str) {
         if (str == null) {
             return false;
         }
         Stack<Character> stack = new Stack<>();
         for (char ch : str.toCharArray()) {
-            if (map.containsKey(ch)){
+            // 判断是否是合法括号
+            if (map.containsValue(ch)) {
                 stack.push(ch);
-            } else if (map.containsValue(ch)){
+            } else if (map.containsKey(ch)) {
                 if (stack.empty() || !stack.pop().equals(map.get(ch))) {
                     return false;
                 }

@@ -6,7 +6,7 @@ package com.zhulin.shuati.leetcode.medium;
  *
  * 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
  *
- *  
+ *
  *
  * 示例:
  *
@@ -87,11 +87,14 @@ public class SwapPairs {
      * 如果一个问题 A 可以分解为若干子问题 B、C、D，你可以假设子问题 B、C、D 已经解决，在此基础上思考如何解决问题 A。
      * 而且，你只需要思考问题 A 与子问题 B、C、D 两层之间的关系即可，不需要一层一层往下思考子问题与子子问题，子子问题与子子子问题之间的关系。
      * 屏蔽掉递归细节，这样子理解起来就简单多了。
+     *
+     * 也即我们只要考虑当前层怎么连接下一层返回的节点，并且返回当前层反转后的节点
      * @param head
      * @author Linn-cn
      * @date 2020/8/8
      */
     public static ListNode swapPairs2(ListNode head) {
+        Object o = 'f';
         if(head == null || head.next == null){
             return head;
         }

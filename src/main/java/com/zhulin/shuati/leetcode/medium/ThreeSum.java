@@ -1,11 +1,10 @@
 package com.zhulin.shuati.leetcode.medium;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 /**
  * 题目：三数之和
- * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+ * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
  * <p>
  * 注意：答案中不可以包含重复的三元组。
  * <p>
@@ -34,7 +33,9 @@ public class ThreeSum {
         }
     }
 
-    // case1：暴力求解，三层循环，时间复杂度为O(n^3)   好low，直接超时
+    /**
+     * case1：暴力求解，三层循环，时间复杂度为O(n^3)   好low，直接超时
+     */
     public static List<List<Integer>> threeSum1(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
@@ -65,31 +66,38 @@ public class ThreeSum {
         return lists;
     }
 
-    // case2：利用hash表记录，先遍历一遍，将元素放入hash，然后在循环去判断hash表里是否有数相加为0。O(n^2)
-    // FIXME 存在重复问题
+    /**
+     * 利用hash表记录，先遍历一遍，将元素放入hash，然后在循环去判断hash表里是否有数相加为0。O(n^2)
+     */
     public static List<List<Integer>> threeSum2(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        if (nums.length <= 3) {
-            if (nums.length == 3 && nums[0] + nums[1] + nums[2] == 0) {
-                lists.add(new ArrayList<>(Arrays.asList(nums[0], nums[1], nums[2])));
-            }
-            return lists;
+        if (nums == null || nums.length <= 2) {
+            return Collections.emptyList();
         }
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 1; i++) {
-            int j = i + 1;
-            // if (i >= 1  && (nums[i] == nums[i - 1])) continue;
-            int key = -(nums[i] + nums[j]);
-            if (map.containsKey(key)) {
-                lists.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], key)));
+        Set<List<Integer>> result = new LinkedHashSet<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            // a,b,c
+            // c = -(a+b)
+            int target = -nums[i];
+            Map<Integer, Integer> hashMap = new HashMap<>(nums.length - i);
+            for (int j = i + 1; j < nums.length; j++) {
+                int v = target - nums[j];
+                Integer exist = hashMap.get(v);
+                if (exist != null) {
+                    List<Integer> list = Arrays.asList(nums[i], exist, nums[j]);
+                    list.sort(Comparator.naturalOrder());
+                    result.add(list);
+                } else {
+                    hashMap.put(nums[j], nums[j]);
+                }
             }
-            map.put(nums[i], i);
         }
-        return lists;
+
+        return new ArrayList<>(result);
     }
 
-    // 排序加双指针
+    /**
+     * 排序加双指针 O(n^2)
+     */
     public static List<List<Integer>> threeSum3(int[] nums) {
         // 先排序
         Arrays.sort(nums);
