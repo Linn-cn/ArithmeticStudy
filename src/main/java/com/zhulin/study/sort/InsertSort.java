@@ -11,9 +11,12 @@ import java.util.Arrays;
  **/
 public class InsertSort {
     public static void main(String[] args) {
-        int[] numbers = {1, 3, 45, 1, 6, 7, 9};
-        insertSort2(numbers);
-        System.out.println(Arrays.toString(numbers));
+        int[] numbers1 = {11, 23, 45, 32, 16, 27, 29};
+        int[] numbers2 = {14, 32, 25, 17, 36, 13, 9};
+        insertSort3(numbers1);
+        insertSort3(numbers2);
+        System.out.println(Arrays.toString(numbers1));
+        System.out.println(Arrays.toString(numbers2));
     }
 
     public static void insertSort1(int[] array) {
@@ -50,6 +53,23 @@ public class InsertSort {
             // 从有序数组的后面往前比较，大于temp的值都得后移
             for (; j >= 0 && array[j] > temp; j--) {
                 array[j + 1] = array[j];
+            }
+            // 碰到小于或等于的数停止，由于多减了1，所以加上1后，赋值为插入值temp
+            array[j + 1] = temp;
+        }
+    }
+
+
+    public static void insertSort3(int[] array) {
+        if (array.length <= 1) return;
+        // 默认第一个有序
+        for (int i = 1; i < array.length; i++) {
+            int temp = array[i];
+            int j = i - 1;
+            // 从有序数组的后面往前比较，大于temp的值都得后移
+            while (j >= 0 && array[j] > temp) {
+                array[j + 1] = array[j];
+                j--;
             }
             // 碰到小于或等于的数停止，由于多减了1，所以加上1后，赋值为插入值temp
             array[j + 1] = temp;

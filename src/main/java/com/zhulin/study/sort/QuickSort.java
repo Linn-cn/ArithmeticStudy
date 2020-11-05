@@ -20,15 +20,14 @@ import java.util.Arrays;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] nums = {6, 4, 1, 3, 2};
+        int[] nums = {5, 11, 4, 7, 8, 16};
         quickSort(nums, 0, nums.length - 1);
         System.out.println(Arrays.toString(nums));
     }
 
     public static void quickSort(int[] nums, int low, int high) {
-        int pivot;
         if (low < high) {
-            pivot = partition(nums, low, high);
+            int pivot = partition2(nums, low, high);
             quickSort(nums, low, pivot - 1);
             quickSort(nums, pivot + 1, high);
         }
@@ -60,27 +59,27 @@ public class QuickSort {
     }
 
     /**
-     * 如果我们不考虑空间消耗的话，partition() 分区函数可以写得非常简单。
-     * 我们申请两个临时数组 X 和 Y，遍历 A[p…r]，将小于 pivot 的元素都拷贝到临时数组 X，
-     * 将大于 pivot 的元素都拷贝到临时数组 Y，最后再将数组 X 和数组 Y 中数据顺序拷贝到 A[p…r]。
-     *
-     * 这样快排就不是原地排序算法了
+     * 这里的处理有点类似选择排序。我们通过游标 i 把 A[p…r-1] 分成两部分。A[p…i-1] 的元素都是小于 pivot 的，我们暂且叫它“已处理区间”，A[i…r-1] 是“未处理区间”。
+     * 我们每次都从未处理的区间 A[i…r-1] 中取一个元素 A[j]，与 pivot 对比，如果小于 pivot，则将其加入到已处理区间的尾部，也就是 A[i] 的位置。
      * @param nums
      * @param low
      * @param high
-     * @author Linn-cn
-     * @create 2020/8/13
-     * @return int
+     * @return
      */
-    public static int paratiton1(int[] nums, int low, int high){
-        int pivotkey = nums[low];
-        int[] lows = new int[high - low];
-        int[] highs = new int[high - low];
-        for (; low < high && nums[high] > pivotkey; low++) {
-
+    private static int partition2(int[] nums, int low, int high) {
+        int pivotkey = nums[high];
+        int i = low;
+        for (int j = i; j < high; j++) {
+            if (nums[j] < pivotkey){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
+            }
         }
-
-        return 0;
+        nums[high] = nums[i];
+        nums[i] = pivotkey;
+        return i;
     }
 
 }

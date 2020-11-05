@@ -12,7 +12,9 @@ import java.util.Arrays;
 public class BubbleSort {
     public static void main(String[] args) {
         int[] numbers = {1, 3, 45, 1, 6, 7, 9};
+        int[] numbers2 = {5, 23, 45, 11, 2, 27, 9};
         bubbleSort(numbers);
+        bubbleSort(numbers2);
     }
 
     /**

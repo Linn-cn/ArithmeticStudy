@@ -15,13 +15,13 @@ package com.zhulin.shuati.leetcode.simple;
 public class FibonacciDemo {
 
     public static void main(String[] args) {
-        System.out.println(getFibonacci(25));
+        System.out.println(Fibonacci(3));
         System.out.println(recursionFibonacci(25));
     }
 
     public static int getFibonacci(int n){
         if (n < 3) return n == 0 ? 0 : 1;
-        int temp,x = 0, z = 1,y = 1;
+        int temp,x = 0,y = 1,z = 1;
         for (int i = 3; i <= n; i++) {
             temp = x + y + z;
             x = y;
@@ -29,6 +29,23 @@ public class FibonacciDemo {
             z = temp;
         }
         return z;
+    }
+
+    public static int Fibonacci(int n) {
+        if(n == 0){
+            return 0;
+        }else if(n == 1){
+            return 1;
+        }
+        int sum = 0;
+        int two = 0;
+        int one = 1;
+        for(int i=2;i<=n;i++){
+            sum = two + one;
+            two = one;
+            one = sum;
+        }
+        return sum;
     }
 
     public static int recursionFibonacci(int n){

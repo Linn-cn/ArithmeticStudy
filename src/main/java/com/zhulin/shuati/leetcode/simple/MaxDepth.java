@@ -38,6 +38,12 @@ public class MaxDepth {
 
     }
 
+    /**
+     * 深度优先算法
+     * @param root
+     * @author Linn-cn
+     * @date 2020/10/12
+     */
     public static int maxDepth(TreeNode root) {
         if (root == null){
             return 0;

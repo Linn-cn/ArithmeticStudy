@@ -12,26 +12,18 @@ import java.util.List;
  **/
 public class Demo {
     public static void main(String[] args) {
-        Insert(2563);
-    }
+        ArrayList<String> list = new ArrayList<String>(){{
+            add("a");
+            add("b");
+            add("c");
+        }};
 
-    static List<Integer> list = new ArrayList<>();
-
-    public static void Insert(Integer num) {
-        int i = 0;
-        while(num > 0){
-            i++;
-            list.add(num%10);
-            num = num/10;
+        for (int i = 0, m = list.size(); i < m; i++) {
+            String str = list.get(i);
+            if ("a".equals(str)){
+                list.remove(i);
+            }
         }
-        System.out.println(GetMedian(i));
-    }
-
-    public static Double GetMedian(int i) {
-        int temp = i / 2;
-        if(i%2 == 0){
-            return (double)((list.get(temp) * 10) + list.get(temp - 1));
-        }
-        return (double)list.get(temp);
+        System.out.println(list.size());
     }
 }

@@ -3,13 +3,11 @@ package com.zhulin.study.sort;
 import java.util.Arrays;
 
 /**
- * @author 南街
- * @program ArithmeticStudy
- * @classname mergeSort
- * @description 归并排序，合并排序
- * @create 2020-06-06 17:07
- **/
-public class MergeSort {
+ * 归并排序，合并排序
+ * @author Linn-cn
+ * @date 2020/10/18
+ */
+public class MergeSort1 {
     public static void main(String[] args) {
         int[] A = {5, 4, 7, 9, 10, 21, 3};
         int[] temp = new int[A.length];

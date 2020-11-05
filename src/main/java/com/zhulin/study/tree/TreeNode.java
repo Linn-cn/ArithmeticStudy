@@ -9,15 +9,15 @@ package com.zhulin.study.tree;
  **/
 public class TreeNode<T> {
 
-    private int index;
-    private T data;
-    private TreeNode<T> leftChild;
-    private TreeNode<T> rightChild;
+    // public int index;
+    public T data;
+    public TreeNode<T> left;
+    public TreeNode<T> right;
 
-    public TreeNode(int index, T data) {
-        this.index = index;
+    public TreeNode( T data) {
+        // this.index = Integer.parseInt(null);
         this.data = data;
-        this.leftChild = null;
-        this.rightChild = null;
+        this.left = null;
+        this.left = null;
     }
 }

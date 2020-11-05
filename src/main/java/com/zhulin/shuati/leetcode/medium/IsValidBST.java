@@ -3,7 +3,7 @@ package com.zhulin.shuati.leetcode.medium;
 import java.util.Stack;
 
 /**
- * 题目：验证二叉搜索树
+ * 98. 题目：验证二叉搜索树
  * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
  *
  * 假设一个二叉搜索树具有如下特征：
@@ -11,24 +11,24 @@ import java.util.Stack;
  * 节点的左子树只包含小于当前节点的数。
  * 节点的右子树只包含大于当前节点的数。
  * 所有左子树和右子树自身必须也是二叉搜索树。
- * 示例1:
+ * 示例 1:
  *
  * 输入:
  *     2
  *    / \
  *   1   3
  * 输出: true
- * 示例2:
+ * 示例 2:
  *
  * 输入:
  *     5
  *    / \
  *   1   4
- *     / \
- *    3   6
+ *      / \
+ *     3   6
  * 输出: false
  * 解释: 输入为: [5,1,4,null,null,3,6]。
- *     根节点的值为 5 ，但是其右子节点值为 4 。
+ *      根节点的值为 5 ，但是其右子节点值为 4 。
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/validate-binary-search-tree
@@ -59,7 +59,7 @@ public class IsValidBST {
         node5.right = node4;
         node4.left = node3;
         node4.right = node6;
-        helper2(node5);
+        System.out.println(isValid(node5,null,null));
     }
 
     public static boolean isValidBST(TreeNode root) {
@@ -89,9 +89,15 @@ public class IsValidBST {
     }
 
 
+    /**
+     * 中序遍历
+     * @param root
+     * @author Linn-cn
+     * @date 2020/10/12
+     */
     public static boolean helper2(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        double inorder = - Double.MAX_VALUE;
+        double inorder = -Double.MAX_VALUE;
 
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
@@ -105,5 +111,19 @@ public class IsValidBST {
             root = root.right;
         }
         return true;
+    }
+
+    public static boolean isValid(TreeNode root, Integer min, Integer max) {
+        if (root == null) {
+            return true;
+        }
+        if (min != null && root.val <= min) {
+            return false;
+        }
+        if (max != null && root.val >= max) {
+            return false;
+        }
+        return isValid(root.left, min, root.val) &&
+                isValid(root.right, root.val, max);
     }
 }

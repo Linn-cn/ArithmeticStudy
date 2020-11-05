@@ -3,15 +3,12 @@ package com.zhulin.study.greed;
 import java.util.*;
 
 /**
- * @author 南街
- * @program ArithmeticStudy
- * @classname OptimalLoading
- * @description 最优装载问题
  * 假设山洞中有n种宝物，每种宝物都有重量和价值，而车子的装载容量有限，怎么才能使车子运走的宝物价值最大呢？
  * 使用贪心算法
  * 第一步：求出每个宝物的性价比，并排序，每次取性价比最高的，从而达到全局最佳
- * @create 2020-04-12 13:41
- **/
+ * @author Linn-cn
+ * @date 2020/10/15
+ */
 class Three{
     int id;    // 宝物id
     double w; //每个宝物的重量

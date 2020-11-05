@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 向右旋转 2 步: [6,7,1,2,3,4,5]
  * 向右旋转 3 步: [5,6,7,1,2,3,4]
  *
- * 示例 2:
+ * 示例 2:
  *
  * 输入: [-1,-100,3,99] 和 k = 2
  * 输出: [3,99,-1,-100]
@@ -24,7 +24,7 @@ import java.util.Arrays;
  * 说明:
  *
  * 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。
- * 要求使用空间复杂度为 O(1) 的 原地 算法。
+ * 要求使用空间复杂度为 O(1) 的 原地 算法。
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/rotate-array
@@ -35,7 +35,7 @@ public class Rotate {
 
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,5,6,7};
-        rotate2(nums,3);
+        rotate1(nums,3);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -56,14 +56,17 @@ public class Rotate {
                     temp = nums[i];
                     nums[i] = exchange;
                 }
+                System.out.println(Arrays.toString(nums));
             }
             nums[0] = tailNum;
             k--;
+            System.out.println("一圈：" + Arrays.toString(nums));
         }
     }
 
     /**
      * 优化上面的代码  暴力解法
+     * 最简单的方法是旋转 k 次，每次将数组旋转 1 个元素。
      */
     public static void rotate2(int[] nums, int k) {
         while (k > 0){
@@ -98,7 +101,7 @@ public class Rotate {
      *
      * 在这个方法中，我们首先将所有元素反转。然后反转前 k 个元素，再反转后面 n-k 个元素，就能得到想要的结果。
      *
-     * 假设 n=7n=7 且 k=3k=3 。
+     * 假设 n=7 且 k=3 。
      *
      * 原始数组                  : 1 2 3 4 5 6 7
      * 反转所有数字后             : 7 6 5 4 3 2 1
