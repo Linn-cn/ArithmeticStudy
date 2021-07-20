@@ -9,6 +9,7 @@ package com.zhulin.shuati.leetcode.difficulty;
  * 如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
  *
  *
+ *
  * 示例：
  *
  * 给你这个链表：1->2->3->4->5
@@ -18,11 +19,15 @@ package com.zhulin.shuati.leetcode.difficulty;
  * 当 k = 3 时，应当返回: 3->2->1->4->5
  *
  *
+ *
  * 说明：
  *
  * 你的算法只能使用常数的额外空间。
  * 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
- * 通过次数91,932提交次数147,150
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/reverse-nodes-in-k-group
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  **/
 class ListNode {
     int val;

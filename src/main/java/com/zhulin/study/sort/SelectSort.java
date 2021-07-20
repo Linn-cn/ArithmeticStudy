@@ -32,4 +32,22 @@ public class SelectSort {
         }
         System.out.println("选择排序后：" + Arrays.toString(array));
     }
+
+    public static void selectSort2(int[] num){
+        if (num.length < 2){
+            return;
+        }
+        for (int i = 0; i < num.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < num.length; j++) {
+                minIndex = num[j] < num[minIndex] ? j : minIndex;
+            }
+            if (minIndex != i){
+                int temp = num[i];
+                num[i] = num[minIndex];
+                num[minIndex] = temp;
+            }
+        }
+        System.out.println("选择排序后：" + Arrays.toString(num));
+    }
 }

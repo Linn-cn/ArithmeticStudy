@@ -1,8 +1,5 @@
 package com.zhulin.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author 南街
  * @program ArithmeticStudy
@@ -12,18 +9,39 @@ import java.util.List;
  **/
 public class Demo {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<String>(){{
-            add("a");
-            add("b");
-            add("c");
-        }};
+        ListNode a1 = new ListNode(1);
+        ListNode a2 = new ListNode(2);
+        ListNode a3 = new ListNode(6);
+        ListNode a4 = new ListNode(4);
+        a1.next = a2;
+        a2.next = a3;
+        a3.next = a4;
+        ListNode listNode = removeElements(a1, 6);
+        System.out.println(listNode);
+    }
 
-        for (int i = 0, m = list.size(); i < m; i++) {
-            String str = list.get(i);
-            if ("a".equals(str)){
-                list.remove(i);
+    public static ListNode removeElements(ListNode head, int val) {
+        ListNode sentinel = new ListNode(0);
+        sentinel.next = head;
+
+        ListNode prev = sentinel, curr = head;
+        while (curr != null) {
+            if (curr.val == val) {
+                prev.next = curr.next;
+            } else {
+                prev = curr;
             }
+            curr = curr.next;
         }
-        System.out.println(list.size());
+        return sentinel.next;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
     }
 }

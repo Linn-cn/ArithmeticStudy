@@ -1,9 +1,7 @@
 package com.zhulin.shuati.leetcode.medium;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 题目：102 二叉树的层次遍历
@@ -73,7 +71,7 @@ public class LevelOrder {
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
-    public List<List<Integer>> levelOrder2(TreeNode root) {
+    public static List<List<Integer>> levelOrder2(TreeNode root) {
         List<List<Integer>> lists = new ArrayList<>();
         if (root == null) {
             return lists;
@@ -97,5 +95,38 @@ public class LevelOrder {
             lists.add(list);
         }
         return lists;
+    }
+
+
+    public static List<List<Integer>> levelOrder3(TreeNode root) {
+        List<List<Integer>> results = new ArrayList<>();
+        Queue<List<TreeNode>> queues = new LinkedList<>();
+        if (root == null){
+            return results;
+        }
+        queues.add(Collections.singletonList(root));
+        while (!queues.isEmpty()){
+            List<TreeNode> node = queues.remove();
+            List<TreeNode> queue = new ArrayList<>();
+            List<Integer> result = new ArrayList<>();
+            for (TreeNode treeNode : node) {
+                result.add(treeNode.val);
+                if (treeNode.left != null) {
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    queue.add(treeNode.right);
+                }
+            }
+            if (!queue.isEmpty()){
+                queues.add(queue);
+            }
+            results.add(result);
+        }
+        return results;
+    }
+
+    public static void main(String[] args) {
+        levelOrder2(new TreeNode(2));
     }
 }

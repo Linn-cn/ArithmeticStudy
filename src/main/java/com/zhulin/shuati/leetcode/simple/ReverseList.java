@@ -1,7 +1,7 @@
 package com.zhulin.shuati.leetcode.simple;
 
 /**
- * 反转一个单链表。
+ * 206. 反转链表
  *
  * 示例:
  *

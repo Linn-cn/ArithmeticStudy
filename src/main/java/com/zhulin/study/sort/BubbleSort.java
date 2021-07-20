@@ -13,8 +13,8 @@ public class BubbleSort {
     public static void main(String[] args) {
         int[] numbers = {1, 3, 45, 1, 6, 7, 9};
         int[] numbers2 = {5, 23, 45, 11, 2, 27, 9};
-        bubbleSort(numbers);
-        bubbleSort(numbers2);
+        bubbleSort2(numbers);
+        bubbleSort2(numbers2);
     }
 
     /**
@@ -40,5 +40,22 @@ public class BubbleSort {
             }
         }
         System.out.println(Arrays.toString(numbers));
+    }
+
+    public static void bubbleSort2(int[] number){
+        if (number.length <= 1) return;
+        for (int i = 0; i < number.length; i++) {
+            boolean isSorted = true;
+            for (int j = 0; j < number.length - i - 1; j++) {
+                if (number[j] > number[j + 1]){
+                    int temp = number[j];
+                    number[j] = number[j + 1];
+                    number[j + 1] = temp;
+                    isSorted = false;
+                }
+            }
+            if (isSorted) break;
+        }
+        System.out.println(Arrays.toString(number));
     }
 }

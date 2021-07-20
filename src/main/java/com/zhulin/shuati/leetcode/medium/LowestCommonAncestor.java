@@ -34,6 +34,7 @@ package com.zhulin.shuati.leetcode.medium;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class LowestCommonAncestor {
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 如果当前节点为空 或者 等于 p or q，那么当前节点是最近公共祖先
         if(root == null || root == p || root == q) return root;

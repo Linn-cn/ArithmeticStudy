@@ -77,7 +77,7 @@ public class MergeSort1 {
     public static void merge(int[] A, int low, int mid, int high) {
         // 申请一个辅助数组
         int[] B = new int[high - low + 1];
-        int i = low, j = mid + 1, k = 0;
+        int i = low, j = mid, k = 0;
         // 每次将最小的值放进辅助数组
         while (i <= mid && j <= high) {
             B[k++] = A[i] < A[j] ? A[i++] : A[j++];
@@ -104,7 +104,7 @@ public class MergeSort1 {
             // 再分割右边
             mergeSort(A, mid + 1, high);
             // 排序
-            merge(A, low, mid, high);
+            merge(A, low, mid + 1, high);
         }
     }
 }
