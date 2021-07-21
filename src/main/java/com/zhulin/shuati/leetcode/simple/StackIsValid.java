@@ -49,7 +49,7 @@ public class StackIsValid {
     }
 
     public static void main(String[] args) {
-        System.out.println(isValid("((()(())))"));
+        System.out.println(isValid1("()[(]]"));
     }
 
     /**
@@ -57,7 +57,16 @@ public class StackIsValid {
      *
      * @return
      */
-    public static boolean isValid(String s) {
+    public static boolean isValid0(String s) {
+        // 当字符串本来就是空的时候，我们可以快速返回true
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+        // 当字符串长度为奇数的时候，不可能是一个有效的合法字符串
+        if (s.length() % 2 == 1) {
+            return false;
+        }
+
         Stack<Character> stack = new Stack<>();
         for (char aChar : s.toCharArray()) {
             if (stack.empty()) {
@@ -81,10 +90,16 @@ public class StackIsValid {
         return stack.isEmpty();
     }
 
-    public static boolean isMatch(String str) {
-        if (str == null) {
+    public static boolean isValid1(String str) {
+        // 当字符串本来就是空的时候，我们可以快速返回true
+        if (str == null || str.length() == 0) {
+            return true;
+        }
+        // 当字符串长度为奇数的时候，不可能是一个有效的合法字符串
+        if (str.length() % 2 == 1) {
             return false;
         }
+
         Stack<Character> stack = new Stack<>();
         for (char ch : str.toCharArray()) {
             // 判断是否是合法括号
