@@ -1,5 +1,7 @@
 package com.zhulin.study.sort;
 
+import java.util.Arrays;
+
 /**
  * @author Linn-cn
  * @description 快速排序
@@ -18,29 +20,30 @@ package com.zhulin.study.sort;
 public class QuickSort {
 
   public static void main(String[] args) {
-    int[] nums = {3,2,1,5,6,4};
-    System.out.println(quickSort(nums, 0, nums.length - 1, 2));
+    int[] nums = {3, 2, 1, 5, 6, 4};
+    quickSort(nums, 0, nums.length - 1);
+    System.out.println(Arrays.toString(nums));
   }
 
-  // public static void quickSort(int[] nums, int low, int high) {
-  //     if (low < high) {
-  //         int pivot = partition2(nums, low, high);
-  //         quickSort(nums, low, pivot - 1);
-  //         quickSort(nums, pivot + 1, high);
-  //     }
+  public static void quickSort(int[] nums, int low, int high) {
+    if (low < high) {
+      int pivot = partition2(nums, low, high);
+      quickSort(nums, low, pivot - 1);
+      quickSort(nums, pivot + 1, high);
+    }
+  }
+
+  // public static int quickSort(int[] nums, int low, int high, int k) {
+  //   int pivot = partition2(nums, low, high);
+  //   if (pivot + 1 == k) {
+  //     return nums[pivot];
+  //   }
+  //   if (pivot + 1 > k) {
+  //     return quickSort(nums, low, pivot - 1, k);
+  //   } else {
+  //     return quickSort(nums, pivot + 1, high, k);
+  //   }
   // }
-
-  public static int quickSort(int[] nums, int low, int high, int k) {
-    int pivot = partition2(nums, low, high);
-    if (pivot + 1 == k) {
-      return nums[pivot];
-    }
-    if (pivot + 1 > k) {
-      return quickSort(nums, low, pivot - 1, k);
-    } else {
-      return quickSort(nums, pivot + 1, high, k);
-    }
-  }
 
   /**
    * 标准的partition的写法
@@ -76,7 +79,7 @@ public class QuickSort {
     int pivotkey = nums[high];
     int i = low;
     for (int j = i; j < high; j++) {
-      if (nums[j] > pivotkey) {
+      if (nums[j] < pivotkey) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
