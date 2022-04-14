@@ -1,4 +1,4 @@
-package com.zhulin.study.tree;
+package com.zhulin.shuati;
 
 /**
  * 树节点
@@ -6,7 +6,7 @@ package com.zhulin.study.tree;
  * @author Zhu Lin
  * @date 2022/4/13
  */
-class TreeNode<T> {
+public class TreeNode<T> {
 
     public T data;
     public TreeNode<T> left;
