@@ -46,24 +46,18 @@ class TreeNode {
 
 public class IsValidBST {
 
-    private static Integer pre = Integer.MIN_VALUE;
+    private static boolean res = true;
 
     public static void main(String[] args) {
-        TreeNode node5 = new TreeNode(5);
-        TreeNode node1 = new TreeNode(1);
-        TreeNode node4 = new TreeNode(4);
-        TreeNode node3 = new TreeNode(3);
-        TreeNode node6 = new TreeNode(6);
-
-        node5.left = node1;
-        node5.right = node4;
-        node4.left = node3;
-        node4.right = node6;
-        System.out.println(isValid(node5,null,null));
+        IsValidBST validBST = new IsValidBST();
+        TreeNode node = new TreeNode(0);
+        System.out.println(validBST.isValidBST(node));
     }
 
-    public static boolean isValidBST(TreeNode root) {
-        return helper2(root);
+    public boolean isValidBST(TreeNode root) {
+        Integer preV = Integer.MIN_VALUE;
+        preOrder(root, preV);
+        return res;
     }
 
     /**
@@ -125,5 +119,19 @@ public class IsValidBST {
         }
         return isValid(root.left, min, root.val) &&
                 isValid(root.right, root.val, max);
+    }
+
+    public void preOrder(TreeNode root, Integer preV) {
+        if (root != null) {
+            // 先遍历左子树
+            preOrder(root.left, preV);
+            if (preV >= root.val) {
+                res = false;
+                return;
+            }
+            preV = root.val;
+            // 最后遍历右子树
+            preOrder(root.right, preV);
+        }
     }
 }
